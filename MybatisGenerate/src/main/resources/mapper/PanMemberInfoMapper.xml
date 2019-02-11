@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edc.zsy.mapper.PanMemberInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.edc.zsy.entity.PanMemberInfo" >
+    <id column="fan_member_id" property="fanMemberId" jdbcType="INTEGER" />
+    <result column="fan_member_code" property="fanMemberCode" jdbcType="VARCHAR" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="member_code" property="memberCode" jdbcType="VARCHAR" />
+    <result column="member_channel" property="memberChannel" jdbcType="VARCHAR" />
+    <result column="province_code" property="provinceCode" jdbcType="VARCHAR" />
+    <result column="city_code" property="cityCode" jdbcType="VARCHAR" />
+    <result column="country_code" property="countryCode" jdbcType="VARCHAR" />
+    <result column="store_code" property="storeCode" jdbcType="VARCHAR" />
+    <result column="store_name" property="storeName" jdbcType="VARCHAR" />
+    <result column="store_type" property="storeType" jdbcType="VARCHAR" />
+    <result column="store_property" property="storeProperty" jdbcType="VARCHAR" />
+    <result column="member_active_state" property="memberActiveState" jdbcType="TINYINT" />
+    <result column="member_active_time" property="memberActiveTime" jdbcType="TIMESTAMP" />
+    <result column="pan_member_source" property="panMemberSource" jdbcType="VARCHAR" />
+    <result column="creator_id" property="creatorId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updator_id" property="updatorId" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fan_member_id, fan_member_code, member_id, member_code, member_channel, province_code, 
+    city_code, country_code, store_code, store_name, store_type, store_property, member_active_state, 
+    member_active_time, pan_member_source, creator_id, create_time, updator_id, update_time, 
+    is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pan_member_info
+    where fan_member_id = #{fanMemberId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pan_member_info
+    where fan_member_id = #{fanMemberId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.edc.zsy.entity.PanMemberInfo" >
+    insert into pan_member_info (fan_member_id, fan_member_code, member_id, 
+      member_code, member_channel, province_code, 
+      city_code, country_code, store_code, 
+      store_name, store_type, store_property, 
+      member_active_state, member_active_time, 
+      pan_member_source, creator_id, create_time, 
+      updator_id, update_time, is_delete
+      )
+    values (#{fanMemberId,jdbcType=INTEGER}, #{fanMemberCode,jdbcType=VARCHAR}, #{memberId,jdbcType=INTEGER}, 
+      #{memberCode,jdbcType=VARCHAR}, #{memberChannel,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, 
+      #{cityCode,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, #{storeCode,jdbcType=VARCHAR}, 
+      #{storeName,jdbcType=VARCHAR}, #{storeType,jdbcType=VARCHAR}, #{storeProperty,jdbcType=VARCHAR}, 
+      #{memberActiveState,jdbcType=TINYINT}, #{memberActiveTime,jdbcType=TIMESTAMP}, 
+      #{panMemberSource,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updatorId,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.edc.zsy.entity.PanMemberInfo" >
+    insert into pan_member_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fanMemberId != null" >
+        fan_member_id,
+      </if>
+      <if test="fanMemberCode != null" >
+        fan_member_code,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="memberCode != null" >
+        member_code,
+      </if>
+      <if test="memberChannel != null" >
+        member_channel,
+      </if>
+      <if test="provinceCode != null" >
+        province_code,
+      </if>
+      <if test="cityCode != null" >
+        city_code,
+      </if>
+      <if test="countryCode != null" >
+        country_code,
+      </if>
+      <if test="storeCode != null" >
+        store_code,
+      </if>
+      <if test="storeName != null" >
+        store_name,
+      </if>
+      <if test="storeType != null" >
+        store_type,
+      </if>
+      <if test="storeProperty != null" >
+        store_property,
+      </if>
+      <if test="memberActiveState != null" >
+        member_active_state,
+      </if>
+      <if test="memberActiveTime != null" >
+        member_active_time,
+      </if>
+      <if test="panMemberSource != null" >
+        pan_member_source,
+      </if>
+      <if test="creatorId != null" >
+        creator_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updatorId != null" >
+        updator_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fanMemberId != null" >
+        #{fanMemberId,jdbcType=INTEGER},
+      </if>
+      <if test="fanMemberCode != null" >
+        #{fanMemberCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberCode != null" >
+        #{memberCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memberChannel != null" >
+        #{memberChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null" >
+        #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCode != null" >
+        #{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeType != null" >
+        #{storeType,jdbcType=VARCHAR},
+      </if>
+      <if test="storeProperty != null" >
+        #{storeProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="memberActiveState != null" >
+        #{memberActiveState,jdbcType=TINYINT},
+      </if>
+      <if test="memberActiveTime != null" >
+        #{memberActiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="panMemberSource != null" >
+        #{panMemberSource,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatorId != null" >
+        #{updatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edc.zsy.entity.PanMemberInfo" >
+    update pan_member_info
+    <set >
+      <if test="fanMemberCode != null" >
+        fan_member_code = #{fanMemberCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberCode != null" >
+        member_code = #{memberCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memberChannel != null" >
+        member_channel = #{memberChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        province_code = #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null" >
+        country_code = #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCode != null" >
+        store_code = #{storeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null" >
+        store_name = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeType != null" >
+        store_type = #{storeType,jdbcType=VARCHAR},
+      </if>
+      <if test="storeProperty != null" >
+        store_property = #{storeProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="memberActiveState != null" >
+        member_active_state = #{memberActiveState,jdbcType=TINYINT},
+      </if>
+      <if test="memberActiveTime != null" >
+        member_active_time = #{memberActiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="panMemberSource != null" >
+        pan_member_source = #{panMemberSource,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        creator_id = #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatorId != null" >
+        updator_id = #{updatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+    </set>
+    where fan_member_id = #{fanMemberId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edc.zsy.entity.PanMemberInfo" >
+    update pan_member_info
+    set fan_member_code = #{fanMemberCode,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=INTEGER},
+      member_code = #{memberCode,jdbcType=VARCHAR},
+      member_channel = #{memberChannel,jdbcType=VARCHAR},
+      province_code = #{provinceCode,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      country_code = #{countryCode,jdbcType=VARCHAR},
+      store_code = #{storeCode,jdbcType=VARCHAR},
+      store_name = #{storeName,jdbcType=VARCHAR},
+      store_type = #{storeType,jdbcType=VARCHAR},
+      store_property = #{storeProperty,jdbcType=VARCHAR},
+      member_active_state = #{memberActiveState,jdbcType=TINYINT},
+      member_active_time = #{memberActiveTime,jdbcType=TIMESTAMP},
+      pan_member_source = #{panMemberSource,jdbcType=VARCHAR},
+      creator_id = #{creatorId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator_id = #{updatorId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where fan_member_id = #{fanMemberId,jdbcType=INTEGER}
+  </update>
+</mapper>
